@@ -1,13 +1,14 @@
 // Shared between the browser (window.EcoFlowShared) and the API (require("../shared.js")).
 (function (root) {
+  // photo: path to a picture in photos/, e.g. "photos/ramzi.jpg" (leave "" to show initials)
   const members = [
-    { name: "Ramzi", role: "Leader & Technical Project Manager", desc: "Coordinates the team, keeps the project on track, and manages the technical side of the solutions.", focus: "Leadership", initials: "RA", color: "#234c39" },
-    { name: "Daniel", role: "System Thinking & Project Management", desc: "Connects the big picture, identifies dependencies, and keeps plans organized and realistic.", focus: "Strategy", initials: "D", color: "#3979c9" },
-    { name: "Connor", role: "Website Design Specialist & Project Manager", desc: "Designs and maintains the website and helps manage project timelines and deliverables.", focus: "Digital", initials: "C", color: "#6d50b5" },
-    { name: "Brook", role: "Project Design Lead", desc: "Leads the overall project design and makes sure solutions are practical, innovative, and impactful.", focus: "Design", initials: "B", color: "#df5666" },
-    { name: "Feras", role: "Co-Project Design Lead", desc: "Supports the design process and brings creative ideas to prototypes and testing.", focus: "Prototyping", initials: "F", color: "#e97a27" },
-    { name: "Andreas", role: "Communications and Promotions Manager", desc: "Coordinates outreach, promotes the campaign, and communicates impact to partners and the community.", focus: "Outreach", initials: "A", color: "#238c83" },
-    { name: "Kajus", role: "Senior Communications Specialist", desc: "Creates clear content, supports media, and keeps the campaign message consistent across channels.", focus: "Content", initials: "K", color: "#4546b7" }
+    { name: "Ramzi", ceo: true, role: "CEO · Leader & Technical Project Manager", desc: "Coordinates the team, keeps the project on track, and manages the technical side of the solutions.", focus: "Leadership", initials: "RA", color: "#234c39", photo: "" },
+    { name: "Daniel", role: "System Thinking & Project Management", desc: "Connects the big picture, identifies dependencies, and keeps plans organized and realistic.", focus: "Strategy", initials: "D", color: "#3979c9", photo: "" },
+    { name: "Connor", role: "Website Design Specialist & Project Manager", desc: "Designs and maintains the website and helps manage project timelines and deliverables.", focus: "Digital", initials: "C", color: "#6d50b5", photo: "" },
+    { name: "Brook", role: "Project Design Lead", desc: "Leads the overall project design and makes sure solutions are practical, innovative, and impactful.", focus: "Design", initials: "B", color: "#df5666", photo: "" },
+    { name: "Feras", role: "Co-Project Design Lead", desc: "Supports the design process and brings creative ideas to prototypes and testing.", focus: "Prototyping", initials: "F", color: "#e97a27", photo: "" },
+    { name: "Andreas", role: "Communications and Promotions Manager", desc: "Coordinates outreach, promotes the campaign, and communicates impact to partners and the community.", focus: "Outreach", initials: "A", color: "#238c83", photo: "" },
+    { name: "Kajus", role: "Senior Communications Specialist", desc: "Creates clear content, supports media, and keeps the campaign message consistent across channels.", focus: "Content", initials: "K", color: "#4546b7", photo: "" }
   ];
 
   const milestoneNames = ["Research & planning", "School outreach", "Household bin system", "Prototype development", "Government presentation"];
