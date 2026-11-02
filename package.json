@@ -1,0 +1,9 @@
+{
+  "name": "delhi-eco-flow-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Delhi Eco-Flow team dashboard (static page + Vercel serverless API backed by Upstash Redis).",
+  "engines": {
+    "node": ">=18"
+  }
+}

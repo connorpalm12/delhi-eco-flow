@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delhi Eco-Flow | Team Dashboard</title>
+<meta name="description" content="Team dashboard for Delhi Eco-Flow, an AES Unit 4 Social Action Project.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+<style>
+:root{--forest:#0c2925;--forest2:#123b32;--leaf:#9fe29b;--leaf2:#d9f3d5;--ink:#17352f;--muted:#607a73;--paper:#f5f8f5;--line:#dce8e0;--white:#fff;--amber:#f4c875;--red:#d96666;--blue:#5a93df}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}.topbar{position:sticky;top:0;z-index:5;background:rgba(10,37,32,.97);color:#fff;border-bottom:1px solid #31574c;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(18px,4vw,56px);gap:20px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.06em;font-size:18px;white-space:nowrap}.leafmark{font-size:26px;color:var(--leaf)}nav{display:flex;gap:8px;flex-wrap:wrap}nav a{color:#d7e8df;text-decoration:none;padding:9px 12px;border-radius:9px;font-size:13px}nav a:hover,nav a.active{background:#214a3d;color:#fff}.top-actions{display:flex;align-items:center;gap:10px}.pill{border:1px solid #477260;border-radius:999px;padding:8px 12px;font-size:12px;color:#dcefe4;white-space:nowrap}.hero{background:linear-gradient(90deg,rgba(7,30,26,.94),rgba(7,30,26,.68) 48%,rgba(7,30,26,.16)),radial-gradient(ellipse at 80% 20%,#d9a56b 0,transparent 28%),linear-gradient(120deg,#294c40,#162f2a 55%,#8e795c);color:white;padding:48px clamp(18px,4vw,56px);display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.6fr);gap:30px;align-items:center;min-height:260px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-40px;bottom:-180px;width:560px;height:350px;border-radius:50%;border:1px solid #8ab09a55;box-shadow:0 0 0 22px #8ab09a12,0 0 0 48px #8ab09a0d,0 0 0 78px #8ab09a0a;pointer-events:none}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:11px;color:#c9f3d1;font-weight:750}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.02;margin:12px 0 14px;letter-spacing:-.04em}.hero h1 span{color:var(--leaf)}.hero p{max-width:660px;color:#e1eee7;line-height:1.6;margin:0 0 22px}.btn{border:0;border-radius:11px;background:var(--leaf);color:#102e27;font-weight:800;padding:11px 16px;box-shadow:0 4px 12px #00000014}.btn:hover{filter:brightness(1.04);transform:translateY(-1px)}.btn.secondary{background:#e7f2eb;border:1px solid var(--line);box-shadow:none}.btn.dark{background:var(--forest);color:#fff}.hero-side{position:relative;z-index:1;background:#0b2a25d9;border:1px solid #69917e55;border-radius:18px;padding:20px;backdrop-filter:blur(8px)}.hero-side h3{margin:0 0 12px;font-size:15px}.quicklink{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-top:1px solid #ffffff22;color:#e5f3eb;text-decoration:none;font-size:13px}.quicklink:hover{color:var(--leaf)}main{max-width:1600px;margin:auto;padding:26px clamp(18px,4vw,56px) 40px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:4px 0 18px}.section-head h2{font-size:25px;margin:0;letter-spacing:-.03em}.section-head p{margin:5px 0 0;color:var(--muted);font-size:13px}.small-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:750}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:28px}.stat,.card,.member-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 5px 18px #17352f05}.stat{padding:17px 19px;display:flex;align-items:center;gap:13px}.stat-icon{width:42px;height:42px;border-radius:13px;background:var(--leaf2);display:grid;place-items:center;font-size:20px}.stat strong{font-size:25px;display:block;line-height:1.15}.stat span{font-size:12px;color:var(--muted)}.team-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:30px}.member-card{padding:18px;position:relative;overflow:hidden}.member-top{display:flex;align-items:center;gap:12px;margin-bottom:13px}.avatar{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;color:#fff;font-weight:850;font-size:15px;flex-shrink:0}.member-card h3{margin:0 0 4px;font-size:16px}.role{font-size:12px;color:var(--muted);line-height:1.4}.member-card p{font-size:12px;color:#47655b;line-height:1.55;min-height:55px;margin:12px 0}.tag{display:inline-flex;border-radius:999px;padding:6px 9px;font-size:10px;font-weight:800;background:#e7f5e8;color:#256144}.member-card button{margin-top:12px;width:100%;background:#f4f8f5;border:1px solid var(--line);border-radius:9px;padding:9px;font-size:12px;color:var(--ink);font-weight:700}.workspace{grid-template-columns:1.05fr 1.2fr .95fr;align-items:stretch}.dark-card{background:linear-gradient(145deg,#0d2b25,#173f33);color:#fff;border-radius:17px;padding:22px;min-height:290px;position:relative;overflow:hidden}.dark-card h3,.card h3{margin:0;font-size:17px}.dark-card .muted{color:#bed8c8}.progress-number{display:flex;justify-content:space-between;align-items:end;margin:23px 0 9px;font-size:12px;color:#dcebe2}.progress-number strong{font-size:28px;color:var(--leaf)}.progress-track{height:10px;background:#ffffff28;border-radius:999px;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#8bd68b,#c3efac);border-radius:999px;transition:width .3s}.milestones{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:25px}.milestone{text-align:center;font-size:10px;color:#c4d9ce;line-height:1.35}.milestone .dot{width:23px;height:23px;border:2px solid #b3d2c1;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;color:#0e3027;font-weight:900}.milestone.done .dot{background:var(--leaf);border-color:var(--leaf)}.card{padding:20px}.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.link-button{border:0;background:transparent;color:#276d4e;font-size:12px;font-weight:800}.task-list{display:grid;gap:0}.task-row{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-top:1px solid #edf2ee}.task-row:first-child{border-top:0}.task-check{width:17px;height:17px;accent-color:#2e8c5d}.task-title{font-size:12px;font-weight:700}.task-meta{font-size:10px;color:var(--muted);margin-top:4px}.due{font-size:10px;color:var(--muted);white-space:nowrap}.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:#aab8b0}.status-dot.green{background:#4aa76b}.status-dot.blue{background:var(--blue)}.status-dot.amber{background:#dfa747}.comm-list{display:grid;gap:9px}.comm-item{display:flex;align-items:center;gap:11px;padding:11px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:#fbfdfb}.comm-item:hover{border-color:#9cc5a8;background:#f3fbf4}.comm-icon{width:36px;height:36px;border-radius:10px;background:#e4f4e5;display:grid;place-items:center;font-size:17px}.comm-item strong{font-size:12px;display:block}.comm-item span{font-size:10px;color:var(--muted);display:block;margin-top:3px}.comm-item .arrow{margin-left:auto;font-size:17px}.lower{grid-template-columns:1fr 1fr;margin-top:20px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;font-weight:800;color:#47655b}.field input,.field select,.field textarea{width:100%;border:1px solid #d7e5dc;border-radius:10px;padding:10px 11px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#63a77a;box-shadow:0 0 0 3px #9fe29b33}.field textarea{min-height:78px;resize:vertical}.form-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}.update-list{display:grid;gap:10px}.update{padding:12px;border-radius:11px;background:#f7faf7;border:1px solid var(--line)}.update strong{font-size:12px}.update p{font-size:12px;line-height:1.5;margin:6px 0;color:#456157}.update small{font-size:10px;color:var(--muted)}.empty{font-size:12px;color:var(--muted);padding:18px 0}.resources{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.resource{border:1px solid var(--line);border-radius:12px;padding:14px;text-decoration:none;color:var(--ink);background:#fff}.resource strong{font-size:12px;display:block;margin:6px 0}.resource span{font-size:11px;color:var(--muted);line-height:1.45}.footer{background:#0a251f;color:#d4e7dc;padding:20px clamp(18px,4vw,56px);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:11px}.footer span{color:#a9c6b6}.toast{position:fixed;bottom:20px;right:20px;background:#0d3027;color:#fff;padding:13px 17px;border-radius:12px;box-shadow:0 10px 30px #0002;z-index:30;font-size:13px;display:none;max-width:calc(100vw - 40px)}.modal-backdrop{display:none;position:fixed;inset:0;background:#061d18a8;z-index:20;align-items:center;justify-content:center;padding:20px}.modal-backdrop.open{display:flex}.modal{background:#fff;border-radius:18px;padding:24px;width:min(520px,100%);max-height:90vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.close{border:0;background:#edf4ee;border-radius:9px;width:34px;height:34px;font-size:19px}.modal .field{margin-bottom:12px}.muted{color:var(--muted)}
+.task-list{max-height:440px;overflow:auto;padding-right:4px}.task-tools{display:flex;gap:10px;align-items:center}.task-tools select{border:1px solid var(--line);border-radius:8px;padding:5px 8px;font-size:12px;background:#fff;color:var(--ink)}.due.overdue{color:#b44a4a;font-weight:800}.task-row.is-done .task-title{text-decoration:line-through;color:var(--muted)}.member-count{display:flex;justify-content:space-between;align-items:center;gap:8px}.member-count small{font-size:11px;color:var(--muted)}.sync-pill:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;background:#aab8b0;vertical-align:1px}.sync-pill.live:before{background:var(--leaf)}.sync-pill.local:before{background:var(--amber)}
+@media(max-width:1100px){.team-grid{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:1fr 1fr}.workspace>.comm-card{grid-column:1/-1}.stats{grid-template-columns:repeat(2,1fr)}nav{display:none}.topbar{flex-wrap:wrap}.lower{grid-template-columns:1fr}}@media(max-width:650px){.hero{grid-template-columns:1fr;padding-top:34px}.hero-side{max-width:none}.team-grid,.stats,.workspace,.resources{grid-template-columns:1fr}.workspace>.comm-card{grid-column:auto}.team-grid{gap:11px}.member-card p{min-height:0}.section-head{align-items:start;flex-direction:column}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.top-actions .pill{display:none}.milestone{font-size:9px}.dark-card{padding:18px}.task-row{grid-template-columns:20px 1fr}.due{grid-column:2}.brand{font-size:15px}.card-head{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="leafmark">◢</span> DELHI ECO-FLOW</div>
+  <nav>
+    <a class="active" href="#home">Home</a><a href="#team">Our Team</a><a href="#goals">Goals & Tasks</a><a href="#resources">Resources</a><a href="#updates">Updates</a>
+  </nav>
+  <div class="top-actions"><span class="pill sync-pill" id="syncPill">Connecting…</span><span class="pill">AES · Unit 4 Social Action Project</span><button class="btn" id="addTaskTop">+ Add task</button></div>
+</header>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">Student-led · Community-driven · Impact-focused</div>
+    <h1>DELHI <span>ECO-FLOW</span></h1>
+    <p>Turning waste into opportunity — for a cleaner environment, stronger communities, and a more sustainable Delhi.</p>
+    <a class="btn" href="#goals" style="display:inline-block;text-decoration:none">Explore our goals&nbsp; →</a>
+  </div>
+  <aside class="hero-side">
+    <h3>Quick links</h3>
+    <a class="quicklink" href="#team"><span>♧ &nbsp; Team roles & responsibilities</span><b>→</b></a>
+    <a class="quicklink" href="#goals"><span>◎ &nbsp; Project goals & tasks</span><b>→</b></a>
+    <a class="quicklink" href="#updates"><span>▤ &nbsp; Weekly check-ins</span><b>→</b></a>
+    <a class="quicklink" href="#resources"><span>▱ &nbsp; Shared resources</span><b>→</b></a>
+  </aside>
+</section>
+<main>
+  <div class="section-head"><div><div class="small-label">Project overview</div><h2>One team. One mission.</h2><p>Make responsibilities visible, keep communication moving, and turn plans into measurable action.</p></div><button class="btn secondary" id="exportBtn">Export team data ↓</button></div>
+  <div class="grid stats">
+    <div class="stat"><div class="stat-icon">◎</div><div><strong id="statTasks">0</strong><span>Active tasks</span></div></div>
+    <div class="stat"><div class="stat-icon">✓</div><div><strong id="statDone">0%</strong><span>Tasks completed</span></div></div>
+    <div class="stat"><div class="stat-icon">♧</div><div><strong id="statMembers">0</strong><span>Team members</span></div></div>
+    <div class="stat"><div class="stat-icon">✉</div><div><strong id="statUpdates">0</strong><span>Team check-ins posted</span></div></div>
+  </div>
+
+  <section id="team">
+    <div class="section-head"><div><h2>Meet the team</h2><p>Clear ownership, complementary skills, shared accountability.</p></div><span class="small-label" id="memberLabel"></span></div>
+    <div class="grid team-grid" id="teamGrid"></div>
+  </section>
+
+  <section id="goals" style="margin-top:28px">
+    <div class="section-head"><div><h2>Goals & execution</h2><p>Track milestones and assign every task to a clear owner.</p></div><button class="btn" id="addTaskBtn">+ Create a task</button></div>
+    <div class="grid workspace">
+      <div class="dark-card">
+        <h3>🌱 Project progress</h3><p class="muted" style="font-size:12px;margin:7px 0">Milestones for the campaign · click a circle to mark it done</p>
+        <div class="progress-number"><span id="progressLabel"></span><strong id="progressPct">0%</strong></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="milestones" id="milestones"></div>
+        <p class="muted" style="font-size:10px;line-height:1.5;margin-top:18px">Update milestones as the team validates each outcome. This is a planning tracker, not a claim of completed impact.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Current tasks</h3><div class="task-tools"><select id="ownerFilter" aria-label="Filter tasks by owner"></select><button class="link-button" id="toggleDoneBtn">Hide completed</button></div></div>
+        <div class="task-list" id="taskList"></div>
+      </div>
+      <div class="card comm-card">
+        <div class="card-head"><h3>Team communication</h3><span class="tag">Keep connected</span></div>
+        <div class="comm-list">
+          <a class="comm-item" href="#updates"><div class="comm-icon">▦</div><div><strong>Weekly check-ins</strong><span>Share wins, next steps, and blockers</span></div><b class="arrow">›</b></a>
+          <a class="comm-item" href="#updates"><div class="comm-icon">☏</div><div><strong>Team updates</strong><span>Keep decisions in one visible place</span></div><b class="arrow">›</b></a>
+          <a class="comm-item" href="#resources"><div class="comm-icon">▤</div><div><strong>Meeting notes</strong><span>Record decisions and action owners</span></div><b class="arrow">›</b></a>
+          <a class="comm-item" href="#resources"><div class="comm-icon">↗</div><div><strong>Shared resources</strong><span>Sources, outreach log, project files</span></div><b class="arrow">›</b></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid lower" id="updates">
+    <div class="card">
+      <div class="card-head"><div><h3>Weekly team check-in</h3><p class="muted" style="font-size:12px;margin:5px 0 0">Each member posts a short progress update.</p></div></div>
+      <form id="checkinForm">
+        <div class="form-grid">
+          <div class="field"><label for="checkinMember">Team member</label><select id="checkinMember" required></select></div>
+          <div class="field"><label for="checkinStatus">Status</label><select id="checkinStatus"></select></div>
+          <div class="field full"><label for="checkinDone">What did you complete?</label><textarea id="checkinDone" required maxlength="1000" placeholder="Add an outcome, link, or evidence…"></textarea></div>
+          <div class="field full"><label for="checkinNext">Next step and deadline</label><input id="checkinNext" required maxlength="300" placeholder="e.g. Contact 2 schools by Friday"></div>
+        </div>
+        <div class="form-actions"><button class="btn" type="submit">Post check-in</button><button class="btn secondary" type="reset">Clear form</button></div>
+      </form>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Latest updates</h3><button class="link-button" id="clearUpdatesBtn">Clear updates</button></div>
+      <div class="update-list" id="updateList"></div>
+    </div>
+  </section>
+
+  <section id="resources" style="margin-top:24px">
+    <div class="section-head"><div><h2>Project resources</h2><p>Keep research, decisions, and outreach evidence easy to find.</p></div></div>
+    <div class="resources">
+      <a class="resource" href="https://delhiecoflow.vercel.app/" target="_blank" rel="noreferrer"><span>🌍 WEBSITE</span><strong>Public campaign website ↗</strong><span>Share the project mission and public-facing work.</span></a>
+      <a class="resource" href="https://www.chintan-india.org/" target="_blank" rel="noreferrer"><span>🤝 PARTNERS</span><strong>Chintan Environmental Research and Action Group ↗</strong><span>Track outreach and research on waste pickers and waste systems.</span></a>
+      <a class="resource" href="#updates"><span>📝 TEAM PROCESS</span><strong>Meeting notes & action log</strong><span>Record decisions, who owns each follow-up, and due dates.</span></a>
+    </div>
+  </section>
+  <p class="muted" style="font-size:11px;line-height:1.6;margin-top:22px" id="storageNote"></p>
+</main>
+<footer class="footer"><div><b>DELHI ECO-FLOW</b> &nbsp; <span>AES Unit 4 Social Action Project</span></div><div>Less waste. More possibility. <span>🌱</span></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="modal-backdrop" id="taskModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="taskModalTitle">
+    <div class="modal-head"><div><div class="small-label">Project management</div><h2 id="taskModalTitle" style="margin:4px 0 0">Create a task</h2></div><button class="close" id="closeModal" aria-label="Close">×</button></div>
+    <form id="taskForm">
+      <div class="field"><label for="taskTitle">Task title</label><input id="taskTitle" required maxlength="160" placeholder="e.g. Draft school outreach email"></div>
+      <div class="form-grid">
+        <div class="field"><label for="taskOwner">Owner</label><select id="taskOwner" required></select></div>
+        <div class="field"><label for="taskDue">Due date</label><input id="taskDue" type="date"></div>
+        <div class="field"><label for="taskMilestone">Related milestone</label><select id="taskMilestone"></select></div>
+        <div class="field"><label for="taskPriority">Priority</label><select id="taskPriority"></select></div>
+      </div>
+      <div class="field" style="margin-top:12px"><label for="taskDefinition">Definition of done</label><textarea id="taskDefinition" maxlength="500" placeholder="What concrete result proves this task is complete?"></textarea></div>
+      <div class="form-actions"><button class="btn" type="submit">Save task</button><button class="btn secondary" type="button" id="cancelTask">Cancel</button></div>
+    </form>
+  </div>
+</div>
+<script src="shared.js"></script>
+<script>
+const {members,milestoneNames,priorities,statuses,starterTasks}=window.EcoFlowShared;
+const LOCAL_KEY="ecoFlowTeamDashboardV2",LEGACY_KEY="ecoFlowTeamDashboardV1",PASS_KEY="ecoFlowTeamPasscode";
+const $=id=>document.getElementById(id);
+let mode="loading"; // "cloud" = shared via /api/data, "local" = this browser only
+let data=freshData();
+let view={owner:"",hideDone:false};
+let pending=0;
+
+function freshData(){return {tasks:starterTasks.map(t=>({...t})),updates:[],milestones:milestoneNames.map(()=>false)}}
+function newId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function todayISO(){const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)}
+function fmtDue(iso){const d=new Date(iso+"T00:00:00");return isNaN(d)?iso:d.toLocaleDateString(undefined,{month:"short",day:"numeric"})}
+function fmtDate(s){const d=new Date(s);return isNaN(d)?s:d.toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"})}
+
+/* ---------- storage ---------- */
+function readLocal(){
+ try{const v2=JSON.parse(localStorage.getItem(LOCAL_KEY));if(v2)return v2}catch(e){}
+ try{const v1=JSON.parse(localStorage.getItem(LEGACY_KEY));if(v1)return {tasks:(v1.tasks||[]).map((t,i)=>({...t,id:newId()+i,created:Date.now()+i})),updates:v1.updates||[],milestones:v1.milestones||freshData().milestones}}catch(e){}
+ return freshData();
+}
+function writeLocal(){try{localStorage.setItem(LOCAL_KEY,JSON.stringify(data))}catch(e){}}
+function getPass(){try{return localStorage.getItem(PASS_KEY)||""}catch(e){return ""}}
+function setPass(p){try{p?localStorage.setItem(PASS_KEY,p):localStorage.removeItem(PASS_KEY)}catch(e){}}
+
+async function request(method,body,canPrompt=true){
+ const headers={"Content-Type":"application/json"},pass=getPass();
+ if(pass)headers["x-team-passcode"]=pass;
+ const r=await fetch("/api/data",{method,headers,body:body?JSON.stringify(body):undefined,cache:"no-store"});
+ if(r.status===401){
+  setPass("");
+  const p=canPrompt&&prompt(pass?"That passcode didn't work. Enter the team passcode:":"Enter the team passcode to make changes:");
+  if(p){setPass(p.trim());return request(method,body,false)}
+  throw new Error("team passcode required");
+ }
+ const j=await r.json().catch(()=>({}));
+ if(!r.ok)throw new Error(j.error||`request failed (${r.status})`);
+ return j;
+}
+async function refresh(){try{data=await request("GET");render()}catch(e){}}
+
+// Apply a change immediately on screen, then save it (shared API or this browser).
+async function act(op,payload,applyLocal,okMsg){
+ applyLocal();render();
+ if(mode!=="cloud"){writeLocal();if(okMsg)showToast(okMsg);return}
+ pending++;
+ try{data=await request("POST",{op,...payload});render();if(okMsg)showToast(okMsg)}
+ catch(e){showToast("Couldn't save — "+e.message);await refresh()}
+ finally{pending--}
+}
+
+/* ---------- rendering ---------- */
+function renderStatic(){
+ const opts=members.map(m=>`<option>${esc(m.name)}</option>`).join("");
+ $("checkinMember").innerHTML=opts;$("taskOwner").innerHTML=opts;
+ $("ownerFilter").innerHTML='<option value="">Everyone</option>'+opts;
+ $("checkinStatus").innerHTML=statuses.map(s=>`<option>${esc(s)}</option>`).join("");
+ $("taskPriority").innerHTML=priorities.map(p=>`<option>${esc(p)}</option>`).join("");
+ $("taskMilestone").innerHTML='<option value="-1">General / no milestone</option>'+milestoneNames.map((m,i)=>`<option value="${i}">${esc(m)}</option>`).join("");
+ $("statMembers").textContent=members.length;$("memberLabel").textContent=members.length+" team members";
+}
+function renderSync(){
+ const pill=$("syncPill");
+ pill.className="pill sync-pill "+(mode==="cloud"?"live":mode==="local"?"local":"");
+ pill.textContent=mode==="cloud"?"Live team sync":mode==="local"?"Saved on this device":"Connecting…";
+ $("storageNote").textContent=mode==="cloud"
+  ?"Tasks, milestones, and check-ins are shared with everyone who opens this dashboard and refresh automatically every 20 seconds."
+  :"Privacy note: shared storage isn't connected, so tasks and check-ins are saved in this browser only and won't appear for teammates. See README.md to enable team sync on Vercel.";
+}
+function renderTeam(){
+ $("teamGrid").innerHTML=members.map(m=>{
+  const open=data.tasks.filter(t=>t.owner===m.name&&!t.done).length;
+  return `<article class="member-card"><div class="member-top"><div class="avatar" style="background:${m.color}">${esc(m.initials)}</div><div><h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div></div><p>${esc(m.desc)}</p><div class="member-count"><span class="tag">${esc(m.focus)}</span><small>${open} open task${open===1?"":"s"}</small></div><button data-member="${esc(m.name)}">View / assign tasks</button></article>`;
+ }).join("");
+}
+function renderMilestones(){
+ $("milestones").innerHTML=milestoneNames.map((m,i)=>`<div class="milestone ${data.milestones[i]?'done':''}"><button aria-label="${data.milestones[i]?'Reopen':'Complete'} ${esc(m)}" aria-pressed="${!!data.milestones[i]}" data-ms="${i}" class="dot">${data.milestones[i]?'✓':''}</button><div>${esc(m)}</div></div>`).join("");
+ const done=data.milestones.filter(Boolean).length,pct=Math.round(done/milestoneNames.length*100);
+ $("progressLabel").textContent=`${done} of ${milestoneNames.length} milestones completed`;$("progressPct").textContent=pct+"%";$("progressFill").style.width=pct+"%";
+}
+function renderTasks(){
+ const today=todayISO();
+ const shown=data.tasks
+  .filter(t=>(!view.owner||t.owner===view.owner)&&(!view.hideDone||!t.done))
+  .sort((a,b)=>(a.done-b.done)||((a.due||"9999")<(b.due||"9999")?-1:(a.due||"9999")>(b.due||"9999")?1:0)||(a.created-b.created));
+ $("ownerFilter").value=view.owner;
+ $("toggleDoneBtn").textContent=view.hideDone?"Show completed":"Hide completed";
+ $("taskList").innerHTML=shown.length?shown.map(t=>{
+  const overdue=!t.done&&t.due&&t.due<today;
+  const dot=t.done?'green':t.priority==='Urgent'?'amber':t.priority==='High'?'blue':'';
+  return `<div class="task-row ${t.done?'is-done':''}"><input class="task-check" type="checkbox" data-task="${esc(t.id)}" ${t.done?'checked':''} aria-label="Mark ${esc(t.title)} complete"><div><div class="task-title"><span class="status-dot ${dot}"></span>${esc(t.title)}</div><div class="task-meta">${esc(t.owner)} · ${t.priority!=='Normal'?esc(t.priority)+' priority · ':''}${t.milestone>=0?esc(milestoneNames[t.milestone]):'General task'}</div>${t.definition?`<div class="task-meta">${esc(t.definition)}</div>`:''}</div><div class="due ${overdue?'overdue':''}">${t.done?'Completed':t.due?(overdue?'Overdue · ':'Due ')+esc(fmtDue(t.due)):'No due date'}<br><button class="link-button" data-delete="${esc(t.id)}" style="color:#a34a4a;padding:5px 0">Delete</button></div></div>`;
+ }).join(""):`<div class="empty">${data.tasks.length?'No tasks match this filter.':'No tasks yet. Create the first task.'}</div>`;
+ const active=data.tasks.filter(t=>!t.done).length,done=data.tasks.length-active;
+ $("statTasks").textContent=active;$("statDone").textContent=(data.tasks.length?Math.round(done/data.tasks.length*100):0)+"%";
+}
+function renderUpdates(){
+ $("updateList").innerHTML=data.updates.length?data.updates.slice().reverse().map(u=>`<article class="update"><strong>${esc(u.member)} <span class="tag" style="margin-left:5px">${esc(u.status)}</span></strong><p>${esc(u.completed)}</p><p><b>Next:</b> ${esc(u.next)}</p><small>${esc(fmtDate(u.date))}</small></article>`).join(""):'<div class="empty">No check-ins yet. Post the first update to get the team communicating.</div>';
+ $("statUpdates").textContent=data.updates.length;
+}
+function render(){renderSync();renderTeam();renderMilestones();renderTasks();renderUpdates()}
+
+/* ---------- UI ---------- */
+function openTask(owner){if(owner||view.owner)$("taskOwner").value=owner||view.owner;$("taskModal").classList.add("open");$("taskTitle").focus()}
+function closeTask(){$("taskModal").classList.remove("open")}
+function showToast(msg){const t=$("toast");t.textContent=msg;t.style.display="block";clearTimeout(window.toastTimeout);window.toastTimeout=setTimeout(()=>t.style.display="none",2600)}
+
+$("addTaskTop").addEventListener("click",()=>openTask());$("addTaskBtn").addEventListener("click",()=>openTask());
+$("closeModal").addEventListener("click",closeTask);$("cancelTask").addEventListener("click",closeTask);
+$("taskModal").addEventListener("click",e=>{if(e.target.id==="taskModal")closeTask()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeTask()});
+
+$("teamGrid").addEventListener("click",e=>{
+ const b=e.target.closest("[data-member]");if(!b)return;
+ view.owner=b.dataset.member;view.hideDone=false;renderTasks();
+ $("goals").scrollIntoView({behavior:"smooth"});
+ showToast(`Showing ${view.owner}'s tasks — “+ Create a task” assigns to ${view.owner}`);
+});
+$("ownerFilter").addEventListener("change",e=>{view.owner=e.target.value;renderTasks()});
+$("toggleDoneBtn").addEventListener("click",()=>{view.hideDone=!view.hideDone;renderTasks()});
+
+$("milestones").addEventListener("click",e=>{
+ const b=e.target.closest("[data-ms]");if(!b)return;
+ const i=Number(b.dataset.ms),done=!data.milestones[i];
+ act("setMilestone",{index:i,done},()=>{data.milestones[i]=done},done?"Milestone completed 🎉":"Milestone reopened");
+});
+$("taskList").addEventListener("change",e=>{
+ const id=e.target.dataset.task;if(!id)return;
+ const done=e.target.checked;
+ act("setTaskDone",{id,done},()=>{const t=data.tasks.find(x=>x.id===id);if(t)t.done=done},done?"Task marked complete":"Task reopened");
+});
+$("taskList").addEventListener("click",e=>{
+ const id=e.target.dataset.delete;if(!id)return;
+ const t=data.tasks.find(x=>x.id===id);
+ if(!confirm(`Delete “${t?t.title:"this task"}” for everyone?`))return;
+ act("deleteTask",{id},()=>{data.tasks=data.tasks.filter(x=>x.id!==id)},"Task deleted");
+});
+$("taskForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const task={id:newId(),title:$("taskTitle").value.trim(),owner:$("taskOwner").value,due:$("taskDue").value,milestone:Number($("taskMilestone").value),priority:$("taskPriority").value,definition:$("taskDefinition").value.trim(),done:false,created:Date.now()};
+ if(!task.title)return;
+ e.target.reset();closeTask();
+ act("addTask",{task},()=>data.tasks.push(task),`Task added for ${task.owner}`);
+});
+$("checkinForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const update={member:$("checkinMember").value,status:$("checkinStatus").value,completed:$("checkinDone").value.trim(),next:$("checkinNext").value.trim(),date:new Date().toISOString()};
+ if(!update.completed||!update.next)return;
+ e.target.reset();
+ act("addUpdate",{update},()=>data.updates.push(update),"Weekly check-in posted");
+});
+$("clearUpdatesBtn").addEventListener("click",()=>{
+ if(!data.updates.length)return showToast("There are no check-ins to clear");
+ if(confirm(mode==="cloud"?"Clear all check-ins for the whole team?":"Clear all check-ins saved in this browser?"))act("clearUpdates",{},()=>{data.updates=[]},"Check-ins cleared");
+});
+$("exportBtn").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify({exported:new Date().toISOString(),...data},null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download=`delhi-eco-flow-team-data-${todayISO()}.json`;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);showToast("Team data exported");
+});
+
+// Highlight the nav link for the section in view.
+const navLinks=[...document.querySelectorAll("nav a")];
+const spy=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting)navLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+en.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+["home","team","goals","updates","resources"].forEach(id=>spy.observe($(id)));
+
+/* ---------- start ---------- */
+(async function init(){
+ renderStatic();render();
+ if(location.protocol!=="file:"){
+  try{data=await request("GET");mode="cloud"}catch(e){}
+ }
+ if(mode!=="cloud"){mode="local";data=readLocal()}
+ render();
+ const poll=()=>{if(mode==="cloud"&&!document.hidden&&!pending&&!$("taskModal").classList.contains("open"))refresh()};
+ setInterval(poll,20000);document.addEventListener("visibilitychange",poll);
+})();
+</script>
+</body>
+</html>
