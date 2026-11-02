@@ -9,58 +9,64 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#141414;--card:#1f1f1f;--card2:#2b2b2b;--line:#3a3a3a;--text:#fff;--muted:#a3a3a3;--red:#e50914;--green:#46d369;--amber:#f5b041;--blue:#54b9f5}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}[hidden]{display:none!important}
-.logo{font-family:"Bebas Neue",Impact,sans-serif;color:var(--red);letter-spacing:.04em;font-size:34px;line-height:1;white-space:nowrap}
+:root{--forest:#0c2925;--leaf:#2e8c5d;--leaf-soft:#e4f4e7;--ink:#17352f;--muted:#607a73;--paper:#f5f8f5;--line:#dce8e0;--red:#e50914;--amber:#b7791f;--danger:#b44a4a;--blue:#2f6fbf}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}body.picking{background:#141414}
+button,input,select,textarea{font:inherit}button{cursor:pointer}[hidden]{display:none!important}
 .avatar{position:relative;overflow:hidden;display:grid;place-items:center;color:#fff;font-weight:800;border-radius:6px;flex-shrink:0}.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* profile picker */
-.picker{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 16px 40px;text-align:center;animation:fade .4s}
-.picker .logo{position:absolute;top:24px;left:clamp(16px,4vw,56px)}.picker h1{font-weight:500;font-size:clamp(28px,5vw,54px);margin:0 0 30px}
+
+/* ---------- profile picker (Netflix-style) ---------- */
+.picker{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 16px 40px;text-align:center;color:#fff;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;animation:fade .4s}
+.picker .logo{position:absolute;top:24px;left:clamp(16px,4vw,56px);font-family:"Bebas Neue",Impact,sans-serif;color:var(--red);letter-spacing:.04em;font-size:34px}
+.picker h1{font-weight:500;font-size:clamp(28px,5vw,54px);margin:0 0 30px}
 .profiles{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(14px,2.5vw,30px);max-width:920px}
-.profile{background:none;border:0;padding:0;color:var(--muted);display:grid;justify-items:center;gap:10px;width:clamp(100px,14vw,150px)}
+.profile{background:none;border:0;padding:0;color:#a3a3a3;display:grid;justify-items:center;gap:10px;width:clamp(100px,14vw,150px)}
 .profile .avatar{width:100%;aspect-ratio:1;font-size:clamp(26px,3.5vw,42px);outline:3px solid transparent;transition:outline-color .15s,transform .15s}
 .profile:hover,.profile:focus-visible{color:#fff;outline:none}.profile:hover .avatar,.profile:focus-visible .avatar{outline-color:#fff;transform:scale(1.04)}
 .profile span{font-size:clamp(14px,1.6vw,18px)}.profile small{font-size:10px;letter-spacing:.12em;font-weight:800;color:#fff;background:var(--red);padding:3px 7px;border-radius:3px;margin-top:-4px}
 .picker-note{margin-top:34px;color:#777;font-size:13px}
-/* app */
-.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:28px;padding:14px clamp(16px,4vw,56px);background:linear-gradient(#000d,#0000);transition:background .3s}.top.solid{background:var(--bg)}
-.top nav{display:flex;gap:20px}.top nav a{color:#e5e5e5;text-decoration:none;font-size:14px}.top nav a:hover{color:#b3b3b3}
-.me{margin-left:auto;display:flex;align-items:center;gap:14px}.sync{font-size:12px;color:var(--muted);white-space:nowrap}.sync:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:#777}.sync.live:before{background:var(--green)}.sync.local:before{background:var(--amber)}
-.me-btn{display:flex;align-items:center;gap:8px;background:none;border:0;color:#fff;font-size:14px;padding:0}.me-btn .avatar{width:32px;height:32px;font-size:13px;border-radius:4px}
-.hero{margin-top:-62px;padding:120px clamp(16px,4vw,56px) 60px;min-height:min(78vh,640px);display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,var(--bg) 0,transparent 35%),linear-gradient(90deg,#000d 0,#0007 55%,#0000),radial-gradient(circle at 78% 28%,#3d8a5c 0,#16402c 32%,#0b0b0b 72%)}
-.hero .tag{font-size:13px;letter-spacing:.3em;color:#ddd;font-weight:700}.hero h1{font-size:clamp(44px,8vw,96px);margin:10px 0 6px;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;letter-spacing:.01em;line-height:.95}
-.hero p{margin:0 0 18px;color:#ddd;font-size:clamp(15px,1.6vw,19px);max-width:620px}
-.bar{height:6px;max-width:620px;background:#ffffff33;border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--red);transition:width .5s}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 24px;max-width:760px}.chip{border:1px solid #ffffff55;background:#0006;color:#ddd;border-radius:999px;padding:6px 12px;font-size:12px}.chip.on{background:var(--green);border-color:var(--green);color:#0b2b16;font-weight:700}button.chip:hover{border-color:#fff}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{border:0;border-radius:4px;padding:10px 22px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:8px}.btn.white{background:#fff;color:#000}.btn.white:hover{background:#ffffffbf}.btn.grey{background:#6d6d6eb3;color:#fff}.btn.grey:hover{background:#6d6d6e66}.btn.red{background:var(--red);color:#fff}
-.ceo-bar{margin:0 clamp(16px,4vw,56px) 10px;padding:12px 16px;border:1px solid #e5091466;background:#e509140f;border-radius:6px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;font-size:13px;color:#ddd}.ceo-bar b{color:var(--red);letter-spacing:.1em;font-size:12px}.ceo-bar .sp{margin-left:auto;display:flex;gap:8px}
-.row{padding:14px clamp(16px,4vw,56px)}.row h2{font-size:clamp(17px,1.8vw,22px);margin:0 0 10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.row h2 select{background:var(--card);color:#fff;border:1px solid var(--line);border-radius:4px;padding:4px 8px;font-size:13px;font-weight:400}
-.slider{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,290px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 16px;scrollbar-width:thin;scrollbar-color:#444 transparent}
-.tile{scroll-snap-align:start;background:var(--card);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:transform .2s,background .2s;min-height:190px}.tile:hover{transform:scale(1.03);background:var(--card2)}
-.tile h3{margin:0;font-size:16px;line-height:1.3}.tile p{margin:0;font-size:13px;color:#bbb;line-height:1.45}.tile small{color:var(--muted);font-size:12px;margin-top:auto}
-.tile-top{display:flex;justify-content:space-between;gap:8px;font-size:12px}.due{color:var(--muted)}.due.late{color:#ff6b6b;font-weight:700}
-.pri{font-weight:700;color:var(--muted)}.pri.p-high{color:var(--blue)}.pri.p-urgent{color:var(--amber)}
-.task.done h3{text-decoration:line-through;color:#888}.task.done{opacity:.7}
-.tile-actions{display:flex;gap:8px}.btn-sm{border:1px solid #ffffff55;background:none;color:#fff;border-radius:4px;padding:6px 10px;font-size:12px;font-weight:700}.btn-sm:hover{border-color:#fff}.btn-sm.primary{background:#fff;color:#000;border-color:#fff}.btn-sm.ghost{color:#bbb;border-color:transparent}.btn-sm.ghost:hover{color:#ff6b6b}
-.tile.add{border:2px dashed #555;background:none;color:#bbb;align-items:center;justify-content:center;font-size:17px;font-weight:700}.tile.add:hover{color:#fff;border-color:#fff}
-.who{display:flex;align-items:center;gap:10px}.who .avatar{width:38px;height:38px;font-size:14px}.who b{display:block;font-size:14px}
-.status{font-size:11px;font-weight:700}.s0{color:var(--green)}.s1{color:var(--amber)}.s2{color:#ff6b6b}.s3{color:var(--blue)}
-.member{min-height:0}.member .avatar{width:100%;aspect-ratio:16/10;font-size:44px;margin-bottom:4px}.member.clickable{cursor:pointer}
-.empty{color:var(--muted);font-size:14px;padding:20px 0}
-.foot{padding:30px clamp(16px,4vw,56px) 40px;color:#777;font-size:12px;line-height:1.6}
-.modal-bg{position:fixed;inset:0;z-index:20;background:#000b;display:flex;align-items:center;justify-content:center;padding:16px}
-.modal{background:#181818;border-radius:8px;padding:24px;width:min(500px,100%);max-height:90vh;overflow:auto;box-shadow:0 20px 60px #000}
-.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.modal h2{margin:0;font-size:22px}.close{background:#2b2b2b;color:#fff;border:0;border-radius:50%;width:34px;height:34px;font-size:20px}
-.field{display:grid;gap:6px;margin-bottom:12px}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{width:100%;background:#333;border:1px solid #333;border-radius:4px;padding:10px 12px;color:#fff;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#fff}.field textarea{min-height:80px;resize:vertical}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:10px;margin-top:6px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:12px 18px;border-radius:4px;font-size:14px;font-weight:600;z-index:30;display:none;max-width:calc(100vw - 32px)}
 @keyframes fade{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
-@media(max-width:800px){.top nav{display:none}.sync{display:none}.me-btn span{display:none}.hero{min-height:0;padding-top:110px}.slider{grid-auto-columns:78%}.two{grid-template-columns:1fr}.ceo-bar .sp{margin-left:0}.logo{font-size:28px}}
+
+/* ---------- team home ---------- */
+.top{position:sticky;top:0;z-index:10;background:var(--forest);color:#fff;display:flex;align-items:center;gap:16px;padding:12px clamp(16px,4vw,48px)}
+.brand{font-weight:850;letter-spacing:.06em;white-space:nowrap}.brand span{color:#9fe29b}
+.me{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:14px}.me .avatar{width:34px;height:34px;font-size:13px}
+.switch{background:#ffffff1a;border:1px solid #ffffff33;color:#fff;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:600}.switch:hover{background:#ffffff2e}
+.sync{font-size:12px;color:#c9dcd3;white-space:nowrap}.sync:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:#888}.sync.live:before{background:#9fe29b}.sync.local:before{background:#f4c875}
+main{max-width:1100px;margin:auto;padding:26px clamp(16px,4vw,48px) 40px;display:grid;gap:20px}
+.welcome h1{margin:0;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em}.welcome p{margin:6px 0 0;color:var(--muted);line-height:1.5}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h2{margin:0;font-size:18px}.hint{margin:4px 0 14px;color:var(--muted);font-size:13px;line-height:1.5}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.cols{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:start}
+.btn{border:0;border-radius:9px;background:var(--leaf);color:#fff;font-weight:700;padding:10px 16px}.btn:hover{filter:brightness(1.08)}.btn.light{background:var(--leaf-soft);color:var(--ink)}
+.link{border:0;background:none;color:var(--danger);font-size:12px;font-weight:600;padding:2px 0}
+/* progress */
+.progress-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:12px}.progress-top strong{font-size:30px;color:var(--leaf)}.progress-top span{color:var(--muted);font-size:13px}
+.bar{height:12px;background:#e6eee8;border-radius:999px;overflow:hidden;margin:8px 0 16px}.bar i{display:block;height:100%;width:0;background:var(--leaf);border-radius:999px;transition:width .4s}
+.milestones{display:flex;flex-wrap:wrap;gap:8px}.ms{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:6px 12px;font-size:13px}.ms.on{background:var(--leaf);border-color:var(--leaf);color:#fff}button.ms:hover{border-color:var(--leaf)}
+/* tasks */
+.task{display:grid;grid-template-columns:24px 1fr;gap:10px;padding:12px 0;border-top:1px solid #edf2ee}.task:first-child{border-top:0}
+.task input{width:19px;height:19px;margin-top:2px;accent-color:var(--leaf)}.task-title{font-weight:650;font-size:15px}.task.done .task-title{text-decoration:line-through;color:var(--muted)}
+.meta{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}.late{color:var(--danger);font-weight:700}.p-high{color:var(--blue);font-weight:700}.p-urgent{color:var(--amber);font-weight:700}
+.empty{color:var(--muted);font-size:14px;padding:12px 0}
+/* forms */
+.field{display:grid;gap:6px;margin-bottom:12px}.field label{font-size:13px;font-weight:650}.field input,.field select,.field textarea{width:100%;border:1px solid #cfdcd3;border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--leaf);box-shadow:0 0 0 3px #2e8c5d22}.field textarea{min-height:80px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* check-ins */
+.updates{display:grid;gap:10px}.update{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfdfb}.update-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.update-head .avatar{width:32px;height:32px;font-size:12px}.update-head small{margin-left:auto;color:var(--muted);font-size:12px}.update p{margin:8px 0 0;font-size:14px;line-height:1.5}
+.status{font-size:11px;font-weight:700;border-radius:999px;padding:3px 8px;background:#eef3ef}.s0{color:var(--leaf)}.s1{color:var(--amber)}.s2{color:var(--danger)}.s3{color:var(--blue)}
+/* team */
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}.member{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;text-align:left;color:var(--ink);width:100%}.member .avatar{width:52px;height:52px;font-size:17px}.member b{display:block}.member span{display:block;font-size:12px;color:var(--muted);line-height:1.4;margin-top:2px}button.member:hover{border-color:var(--leaf)}
+.ceo-tag,.member .ceo-tag{display:inline;font-size:10px;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--red);border-radius:4px;padding:2px 6px;margin-left:6px;vertical-align:2px}
+.ceo{border-color:#e5091455}.ceo h2{color:#a10610}.tools{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff;color:var(--ink)}
+.foot{color:var(--muted);font-size:12px;line-height:1.6;margin:0}
+.modal-bg{position:fixed;inset:0;z-index:20;background:#061d18a8;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal{background:#fff;border-radius:16px;padding:22px;width:min(500px,100%);max-height:90vh;overflow:auto}.modal .card-head{margin-bottom:12px}.close{border:0;background:#edf4ee;border-radius:9px;width:34px;height:34px;font-size:19px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--forest);color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;z-index:30;display:none;max-width:calc(100vw - 32px)}
+@media(max-width:800px){.cols,.two{grid-template-columns:1fr}.sync,.me>span{display:none}}
 </style>
 </head>
-<body>
+<body class="picking">
 <!-- 1. Profile picker -->
 <section class="picker" id="picker">
   <div class="logo">DELHI ECO-FLOW</div>
@@ -71,60 +77,75 @@
 
 <!-- 2. Team home -->
 <div id="app" hidden>
-  <header class="top" id="top">
-    <div class="logo">ECO-FLOW</div>
-    <nav><a href="#home">Home</a><a href="#mine">My tasks</a><a href="#checkins">Check-ins</a><a href="#team">Team</a></nav>
-    <div class="me"><span class="sync" id="sync"></span><button class="me-btn" id="switchBtn" title="Switch profile"></button></div>
+  <header class="top">
+    <div class="brand">DELHI <span>ECO-FLOW</span></div>
+    <div class="me"><span class="sync" id="sync"></span><span id="meName"></span><button class="switch" id="switchBtn">Switch profile</button></div>
   </header>
+  <main>
+    <div class="welcome"><h1 id="welcome"></h1><p id="welcomeSub"></p></div>
 
-  <section class="hero" id="home">
-    <div class="tag" id="greeting"></div>
-    <h1 id="heroPct">0% complete</h1>
-    <p id="heroSub"></p>
-    <div class="bar"><i id="heroBar"></i></div>
-    <div class="chips" id="milestones"></div>
-    <div class="hero-actions"><button class="btn white" id="checkinBtn">▶ Post check-in</button><button class="btn grey" id="addTaskBtn">+ Add task</button></div>
-  </section>
+    <section class="card">
+      <h2>Team progress</h2>
+      <p class="hint" id="progressHint">This is the whole team's progress. It goes up every time someone ticks off a task.</p>
+      <div class="progress-top"><strong id="pct">0%</strong><span id="pctSub"></span></div>
+      <div class="bar"><i id="bar"></i></div>
+      <div class="milestones" id="milestones"></div>
+    </section>
 
-  <div class="ceo-bar" id="ceoBar" hidden>
-    <b>CEO CONTROLS</b><span>Tap a milestone to mark it done. You can add, complete or delete anyone's tasks and check-ins.</span>
-    <div class="sp"><button class="btn-sm" id="exportBtn">Export data ↓</button><button class="btn-sm" id="clearBtn">Clear all check-ins</button></div>
-  </div>
+    <div class="cols">
+      <section class="card" id="mine">
+        <div class="card-head"><div><h2>Your tasks</h2><p class="hint">Tick the box when a task is finished.</p></div><button class="btn" id="addTaskBtn">+ Add a task</button></div>
+        <div id="myTasks"></div>
+      </section>
+      <section class="card">
+        <h2>Post your weekly check-in</h2>
+        <p class="hint">Tell the team what you did and what's next. Takes one minute.</p>
+        <form id="checkinForm">
+          <div class="field"><label for="checkinStatus">How's it going?</label><select id="checkinStatus"></select></div>
+          <div class="field"><label for="checkinDone">What did you get done?</label><textarea id="checkinDone" required maxlength="1000" placeholder="e.g. Emailed 3 schools about the outreach visit"></textarea></div>
+          <div class="field"><label for="checkinNext">What's your next step, and by when?</label><input id="checkinNext" required maxlength="300" placeholder="e.g. Follow up with replies by Friday"></div>
+          <button class="btn" type="submit">Post check-in</button>
+        </form>
+      </section>
+    </div>
 
-  <section class="row" id="mine"><h2>My tasks</h2><div class="slider" id="mineRow"></div></section>
-  <section class="row" id="allSection" hidden><h2>All team tasks <select id="ownerFilter" aria-label="Filter by member"></select></h2><div class="slider" id="allRow"></div></section>
-  <section class="row" id="checkins"><h2>Latest check-ins</h2><div class="slider" id="checkinRow"></div></section>
-  <section class="row" id="team"><h2>The team</h2><div class="slider" id="teamRow"></div></section>
-  <p class="foot" id="storageNote"></p>
+    <section class="card ceo" id="ceoTools" hidden>
+      <div class="card-head">
+        <div><h2>CEO tools</h2><p class="hint">Only you see this. Click a milestone above to mark it reached. Here you can manage anyone's tasks.</p></div>
+        <div class="tools"><select class="filter" id="ownerFilter" aria-label="Show tasks for"></select><button class="btn light" id="exportBtn">Export data</button><button class="btn light" id="clearBtn">Clear all check-ins</button></div>
+      </div>
+      <div id="allTasks"></div>
+    </section>
+
+    <section class="card">
+      <h2>Team check-ins</h2>
+      <p class="hint">The latest updates from everyone, newest first.</p>
+      <div class="updates" id="updates"></div>
+    </section>
+
+    <section class="card">
+      <h2>The team</h2>
+      <p class="hint" id="teamHint">Who does what, and how many tasks each person has left.</p>
+      <div class="team" id="team"></div>
+    </section>
+    <p class="foot" id="storageNote"></p>
+  </main>
 </div>
 
-<!-- Task modal -->
+<!-- Add-task modal -->
 <div class="modal-bg" id="taskModal" hidden>
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="taskTitleH">
-    <div class="modal-head"><h2 id="taskTitleH">New task</h2><button class="close" data-close aria-label="Close">×</button></div>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="taskH">
+    <div class="card-head"><h2 id="taskH">Add a task</h2><button class="close" data-close aria-label="Close">×</button></div>
     <form id="taskForm">
-      <div class="field"><label for="taskTitle">Task</label><input id="taskTitle" required maxlength="160" placeholder="e.g. Draft school outreach email"></div>
-      <div class="field" id="ownerField"><label for="taskOwner">Assign to</label><select id="taskOwner"></select></div>
+      <div class="field"><label for="taskTitle">What needs doing?</label><input id="taskTitle" required maxlength="160" placeholder="e.g. Draft school outreach email"></div>
+      <div class="field" id="ownerField"><label for="taskOwner">Who is doing it?</label><select id="taskOwner"></select></div>
       <div class="two">
-        <div class="field"><label for="taskDue">Due date</label><input id="taskDue" type="date"></div>
+        <div class="field"><label for="taskDue">Due date (optional)</label><input id="taskDue" type="date"></div>
         <div class="field"><label for="taskPriority">Priority</label><select id="taskPriority"></select></div>
       </div>
-      <div class="field"><label for="taskMilestone">Milestone</label><select id="taskMilestone"></select></div>
-      <div class="field"><label for="taskDefinition">Done when…</label><textarea id="taskDefinition" maxlength="500" placeholder="What result proves this is finished?"></textarea></div>
-      <div class="actions"><button class="btn red" type="submit">Save task</button><button class="btn grey" type="button" data-close>Cancel</button></div>
-    </form>
-  </div>
-</div>
-
-<!-- Check-in modal -->
-<div class="modal-bg" id="checkinModal" hidden>
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="checkinH">
-    <div class="modal-head"><h2 id="checkinH">Weekly check-in</h2><button class="close" data-close aria-label="Close">×</button></div>
-    <form id="checkinForm">
-      <div class="field"><label for="checkinStatus">How's it going?</label><select id="checkinStatus"></select></div>
-      <div class="field"><label for="checkinDone">What did you complete?</label><textarea id="checkinDone" required maxlength="1000" placeholder="An outcome, link, or evidence…"></textarea></div>
-      <div class="field"><label for="checkinNext">Next step and deadline</label><input id="checkinNext" required maxlength="300" placeholder="e.g. Contact 2 schools by Friday"></div>
-      <div class="actions"><button class="btn red" type="submit">Post check-in</button><button class="btn grey" type="button" data-close>Cancel</button></div>
+      <div class="field"><label for="taskMilestone">Part of which milestone?</label><select id="taskMilestone"></select></div>
+      <div class="field"><label for="taskDefinition">How will we know it's done? (optional)</label><textarea id="taskDefinition" maxlength="500" placeholder="e.g. Email sent to all 5 schools on the list"></textarea></div>
+      <div class="tools"><button class="btn" type="submit">Save task</button><button class="btn light" type="button" data-close>Cancel</button></div>
     </form>
   </div>
 </div>
@@ -188,7 +209,7 @@ function avatar(m){return `<div class="avatar" style="background:${m.color}">${m
 function renderPicker(){
  $("profiles").innerHTML=members.map(m=>`<button class="profile" data-pick="${esc(m.name)}">${avatar(m)}<span>${esc(m.name)}</span>${m.ceo?"<small>CEO</small>":""}</button>`).join("");
 }
-function showPicker(){me="";store(ME_KEY,"");$("app").hidden=true;$("picker").hidden=false;renderPicker()}
+function showPicker(){me="";store(ME_KEY,"");document.body.classList.add("picking");$("app").hidden=true;$("picker").hidden=false;renderPicker()}
 async function pick(name){
  if(name===CEO&&mode==="cloud"&&data.ceoLocked&&!load(CEO_KEY)){
   const p=prompt(`Enter the CEO passcode for ${CEO}'s profile:`);if(!p)return;
@@ -196,114 +217,115 @@ async function pick(name){
   try{data=await request("POST",{op:"checkCeo"})}catch(e){me="";store(CEO_KEY,"");return showToast("Wrong CEO passcode")}
  }
  me=name;store(ME_KEY,name);
- $("picker").hidden=true;$("app").hidden=false;window.scrollTo(0,0);render();
+ document.body.classList.remove("picking");$("picker").hidden=true;$("app").hidden=false;window.scrollTo(0,0);render();
 }
 
 /* ---------- rendering ---------- */
 function sortTasks(list){return list.slice().sort((a,b)=>(a.done-b.done)||(a.due||"9999").localeCompare(b.due||"9999")||(a.created-b.created))}
-function taskTile(t,showOwner){
- const overdue=!t.done&&t.due&&t.due<todayISO();
- return `<article class="tile task${t.done?" done":""}">
-  <div class="tile-top"><span class="pri p-${esc(t.priority.toLowerCase())}">${esc(t.priority)}</span><span class="due${overdue?" late":""}">${t.done?"Completed":t.due?(overdue?"Overdue · ":"Due ")+esc(fmtDue(t.due)):"No due date"}</span></div>
-  <h3>${esc(t.title)}</h3>${t.definition?`<p>${esc(t.definition)}</p>`:""}
-  <small>${showOwner?esc(t.owner)+" · ":""}${t.milestone>=0?esc(milestoneNames[t.milestone]):"General"}</small>
-  ${canEdit(t.owner)?`<div class="tile-actions"><button class="btn-sm${t.done?"":" primary"}" data-done="${esc(t.id)}">${t.done?"↺ Reopen":"✓ Mark done"}</button><button class="btn-sm ghost" data-del="${esc(t.id)}">Delete</button></div>`:""}
- </article>`;
-}
-function checkinTile(u){
- const m=members.find(x=>x.name===u.member)||{initials:"?",color:"#555"};
- return `<article class="tile"><div class="who">${avatar(m)}<div><b>${esc(u.member)}</b><span class="status s${Math.max(0,statuses.indexOf(u.status))}">${esc(u.status)}</span></div></div>
-  <p>${esc(u.completed)}</p><p><b>Next:</b> ${esc(u.next)}</p><small>${esc(fmtDate(u.date))}</small>
-  ${isCeo()?`<div class="tile-actions"><button class="btn-sm ghost" data-delupdate="${esc(u.date)}" data-member="${esc(u.member)}">Delete</button></div>`:""}</article>`;
+function taskRow(t,showOwner){
+ const overdue=!t.done&&t.due&&t.due<todayISO(),edit=canEdit(t.owner);
+ const due=t.done?"Done":t.due?(overdue?`<span class="late">Overdue · ${esc(fmtDue(t.due))}</span>`:"Due "+esc(fmtDue(t.due))):"No due date";
+ return `<div class="task${t.done?" done":""}">
+  <input type="checkbox" data-done="${esc(t.id)}" ${t.done?"checked":""} ${edit?"":"disabled"} aria-label="Mark “${esc(t.title)}” done">
+  <div><div class="task-title">${esc(t.title)}</div>
+  <div class="meta">${showOwner?`<b>${esc(t.owner)}</b>`:""}<span>${due}</span>${t.priority!=="Normal"?`<span class="p-${esc(t.priority.toLowerCase())}">${esc(t.priority)} priority</span>`:""}<span>${t.milestone>=0?esc(milestoneNames[t.milestone]):"General"}</span>${edit?`<button class="link" data-del="${esc(t.id)}">Delete</button>`:""}</div>
+  ${t.definition?`<div class="meta">Done when: ${esc(t.definition)}</div>`:""}</div></div>`;
 }
 function render(){
  if(!me)return;
  const m=members.find(x=>x.name===me);
- $("switchBtn").innerHTML=`${avatar(m)}<span>${esc(me)} ▾</span>`;
+ $("meName").innerHTML=`${esc(me)}${isCeo()?'<span class="ceo-tag">CEO</span>':""}`;
  $("sync").className="sync "+(mode==="cloud"?"live":mode==="local"?"local":"");
- $("sync").textContent=mode==="cloud"?"Live team sync":mode==="local"?"Saved on this device":"Connecting…";
+ $("sync").textContent=mode==="cloud"?"Live":mode==="local"?"This device only":"Connecting…";
  $("storageNote").textContent=mode==="cloud"
   ?"Everything here is shared with the whole team and refreshes every 20 seconds."
   :"Shared storage isn't connected, so changes are saved in this browser only and teammates won't see them. See README.md to turn on team sync.";
 
- // Group progress — the same for every profile.
+ const mine=data.tasks.filter(t=>t.owner===me),left=mine.filter(t=>!t.done).length;
+ $("welcome").textContent=`Hi ${me} 👋`;
+ $("welcomeSub").textContent=`${m.role}. You have ${left} task${left===1?"":"s"} left.`;
+
+ // Group progress: the same for every profile.
  const doneTasks=data.tasks.filter(t=>t.done).length,doneMs=data.milestones.filter(Boolean).length;
  const pct=data.tasks.length?Math.round(doneTasks/data.tasks.length*100):0;
- $("greeting").textContent=`WELCOME BACK, ${me.toUpperCase()}`;
- $("heroPct").textContent=`Team ${pct}% complete`;
- $("heroSub").textContent=`${doneTasks} of ${data.tasks.length} tasks done · ${doneMs} of ${milestoneNames.length} milestones reached · ${data.updates.length} check-ins posted`;
- $("heroBar").style.width=pct+"%";
+ $("pct").textContent=pct+"%";
+ $("pctSub").textContent=`${doneTasks} of ${data.tasks.length} team tasks done · ${doneMs} of ${milestoneNames.length} milestones reached`;
+ $("bar").style.width=pct+"%";
  $("milestones").innerHTML=milestoneNames.map((n,i)=>{const d=data.milestones[i],label=(d?"✓ ":"")+esc(n);
-  return isCeo()?`<button class="chip${d?" on":""}" data-ms="${i}" aria-pressed="${!!d}">${label}</button>`:`<span class="chip${d?" on":""}">${label}</span>`}).join("");
- $("ceoBar").hidden=!isCeo();
+  return isCeo()?`<button class="ms${d?" on":""}" data-ms="${i}" aria-pressed="${!!d}">${label}</button>`:`<span class="ms${d?" on":""}">${label}</span>`}).join("");
 
- const mine=sortTasks(data.tasks.filter(t=>t.owner===me));
- $("mineRow").innerHTML=`<button class="tile add" data-add>+ New task</button>`+mine.map(t=>taskTile(t,false)).join("");
+ $("myTasks").innerHTML=mine.length?sortTasks(mine).map(t=>taskRow(t,false)).join(""):'<div class="empty">You have no tasks yet. Click “+ Add a task” to add one.</div>';
 
- $("allSection").hidden=!isCeo();
+ $("ceoTools").hidden=!isCeo();
  if(isCeo()){
-  $("ownerFilter").innerHTML='<option value="">Everyone</option>'+members.map(x=>`<option${x.name===ownerFilter?" selected":""}>${esc(x.name)}</option>`).join("");
+  $("ownerFilter").innerHTML='<option value="">Everyone\'s tasks</option>'+members.map(x=>`<option value="${esc(x.name)}"${x.name===ownerFilter?" selected":""}>${esc(x.name)}'s tasks</option>`).join("");
   const all=sortTasks(data.tasks.filter(t=>!ownerFilter||t.owner===ownerFilter));
-  $("allRow").innerHTML=all.length?all.map(t=>taskTile(t,true)).join(""):'<div class="empty">No tasks for this person yet.</div>';
+  $("allTasks").innerHTML=all.length?all.map(t=>taskRow(t,true)).join(""):'<div class="empty">No tasks for this person yet.</div>';
  }
 
- $("checkinRow").innerHTML=data.updates.length?data.updates.slice().reverse().map(checkinTile).join(""):'<div class="empty">No check-ins yet. Post the first one.</div>';
+ $("updates").innerHTML=data.updates.length?data.updates.slice().reverse().map(u=>{
+  const um=members.find(x=>x.name===u.member)||{initials:"?",color:"#888"};
+  return `<article class="update"><div class="update-head">${avatar(um)}<b>${esc(u.member)}</b><span class="status s${Math.max(0,statuses.indexOf(u.status))}">${esc(u.status)}</span><small>${esc(fmtDate(u.date))}</small></div>
+   <p>${esc(u.completed)}</p><p><b>Next:</b> ${esc(u.next)}</p>${isCeo()?`<button class="link" data-delupdate="${esc(u.date)}" data-member="${esc(u.member)}">Delete check-in</button>`:""}</article>`;
+ }).join(""):'<div class="empty">No check-ins yet. Be the first to post one.</div>';
 
- $("teamRow").innerHTML=members.map(x=>{
-  const open=data.tasks.filter(t=>t.owner===x.name&&!t.done).length,done=data.tasks.filter(t=>t.owner===x.name&&t.done).length;
-  return `<article class="tile member${isCeo()?" clickable":""}" ${isCeo()?`data-view="${esc(x.name)}"`:""}>${avatar(x)}<h3>${esc(x.name)}${x.ceo?' <span class="status s2">CEO</span>':""}</h3><p>${esc(x.role)}</p><small>${open} open · ${done} done</small></article>`;
+ $("teamHint").textContent=isCeo()?"Click someone to see and manage their tasks in CEO tools.":"Who does what, and how many tasks each person has left.";
+ $("team").innerHTML=members.map(x=>{
+  const open=data.tasks.filter(t=>t.owner===x.name&&!t.done).length;
+  const inner=`${avatar(x)}<div><b>${esc(x.name)}${x.ceo?'<span class="ceo-tag">CEO</span>':""}</b><span>${esc(x.role)}</span><span>${open} task${open===1?"":"s"} left</span></div>`;
+  return isCeo()?`<button class="member" data-view="${esc(x.name)}">${inner}</button>`:`<div class="member">${inner}</div>`;
  }).join("");
 }
 
-/* ---------- modals ---------- */
-function openModal(id){$(id).hidden=false;$(id).querySelector("input,textarea,select:not([hidden])").focus()}
-function closeModals(){$("taskModal").hidden=true;$("checkinModal").hidden=true}
+/* ---------- modal ---------- */
 function openTask(){
  $("ownerField").hidden=!isCeo();$("taskOwner").value=isCeo()&&ownerFilter?ownerFilter:me;
- openModal("taskModal");$("taskTitle").focus();
+ $("taskModal").hidden=false;$("taskTitle").focus();
 }
+function closeTask(){$("taskModal").hidden=true}
 function showToast(msg){const t=$("toast");t.textContent=msg;t.style.display="block";clearTimeout(window.toastTimeout);window.toastTimeout=setTimeout(()=>t.style.display="none",2600)}
 
 $("taskOwner").innerHTML=members.map(m=>`<option>${esc(m.name)}</option>`).join("");
 $("taskPriority").innerHTML=priorities.map(p=>`<option>${esc(p)}</option>`).join("");
-$("taskMilestone").innerHTML='<option value="-1">General / no milestone</option>'+milestoneNames.map((m,i)=>`<option value="${i}">${esc(m)}</option>`).join("");
+$("taskMilestone").innerHTML='<option value="-1">General / not sure</option>'+milestoneNames.map((m,i)=>`<option value="${i}">${esc(m)}</option>`).join("");
 $("checkinStatus").innerHTML=statuses.map(s=>`<option>${esc(s)}</option>`).join("");
 
 /* ---------- events ---------- */
 $("profiles").addEventListener("click",e=>{const b=e.target.closest("[data-pick]");if(b)pick(b.dataset.pick)});
 $("switchBtn").addEventListener("click",showPicker);
-$("checkinBtn").addEventListener("click",()=>openModal("checkinModal"));
 $("addTaskBtn").addEventListener("click",openTask);
-document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",closeModals));
-document.querySelectorAll(".modal-bg").forEach(bg=>bg.addEventListener("click",e=>{if(e.target===bg)closeModals()}));
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModals()});
-window.addEventListener("scroll",()=>$("top").classList.toggle("solid",scrollY>40));
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",closeTask));
+$("taskModal").addEventListener("click",e=>{if(e.target.id==="taskModal")closeTask()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeTask()});
 $("ownerFilter").addEventListener("change",e=>{ownerFilter=e.target.value;render()});
 
 $("app").addEventListener("click",e=>{
- const el=e.target.closest("[data-add],[data-done],[data-del],[data-delupdate],[data-ms],[data-view]");if(!el)return;
+ const el=e.target.closest("[data-del],[data-delupdate],[data-ms],[data-view]");if(!el)return;
  const d=el.dataset;
- if("add" in d)return openTask();
- if(d.view){ownerFilter=d.view;render();return $("allSection").scrollIntoView({behavior:"smooth"})}
+ if(d.view){ownerFilter=d.view;render();return $("ceoTools").scrollIntoView({behavior:"smooth"})}
  if(d.ms){const i=Number(d.ms),done=!data.milestones[i];return act("setMilestone",{index:i,done},()=>{data.milestones[i]=done},done?"Milestone reached 🎉":"Milestone reopened")}
- if(d.done){const t=data.tasks.find(x=>x.id===d.done);if(!t)return;const done=!t.done;return act("setTaskDone",{id:t.id,done},()=>{t.done=done},done?"Nice — task done ✓":"Task reopened")}
  if(d.del){const t=data.tasks.find(x=>x.id===d.del);if(!t||!confirm(`Delete “${t.title}”?`))return;return act("deleteTask",{id:t.id},()=>{data.tasks=data.tasks.filter(x=>x!==t)},"Task deleted")}
  if(d.delupdate){if(!confirm(`Delete this check-in from ${d.member}?`))return;return act("deleteUpdate",{date:d.delupdate,member:d.member},()=>{data.updates=data.updates.filter(u=>!(u.date===d.delupdate&&u.member===d.member))},"Check-in deleted")}
+});
+$("app").addEventListener("change",e=>{
+ const id=e.target.dataset.done;if(!id)return;
+ const t=data.tasks.find(x=>x.id===id),done=e.target.checked;if(!t)return;
+ act("setTaskDone",{id,done},()=>{t.done=done},done?"Nice — task done ✓":"Task reopened");
 });
 
 $("taskForm").addEventListener("submit",e=>{
  e.preventDefault();
  const task={id:newId(),title:$("taskTitle").value.trim(),owner:isCeo()?$("taskOwner").value:me,due:$("taskDue").value,milestone:Number($("taskMilestone").value),priority:$("taskPriority").value,definition:$("taskDefinition").value.trim(),done:false,created:Date.now()};
  if(!task.title)return;
- e.target.reset();closeModals();
+ e.target.reset();closeTask();
  act("addTask",{task},()=>data.tasks.push(task),task.owner===me?"Task added":`Task added for ${task.owner}`);
 });
 $("checkinForm").addEventListener("submit",e=>{
  e.preventDefault();
  const update={member:me,status:$("checkinStatus").value,completed:$("checkinDone").value.trim(),next:$("checkinNext").value.trim(),date:new Date().toISOString()};
  if(!update.completed||!update.next)return;
- e.target.reset();closeModals();
- act("addUpdate",{update},()=>data.updates.push(update),"Check-in posted");
+ e.target.reset();
+ act("addUpdate",{update},()=>data.updates.push(update),"Check-in posted — thanks!");
 });
 $("clearBtn").addEventListener("click",()=>{
  if(!data.updates.length)return showToast("There are no check-ins to clear");
@@ -326,7 +348,7 @@ $("exportBtn").addEventListener("click",()=>{
  // Reopen the last profile used in this browser (the CEO profile needs its passcode saved).
  const last=load(ME_KEY);
  if(members.some(m=>m.name===last)&&!(last===CEO&&data.ceoLocked&&!load(CEO_KEY)))pick(last);
- const poll=()=>{if(mode==="cloud"&&me&&!document.hidden&&!pending&&$("taskModal").hidden&&$("checkinModal").hidden)refresh()};
+ const poll=()=>{if(mode==="cloud"&&me&&!document.hidden&&!pending&&$("taskModal").hidden&&!document.activeElement.closest("form"))refresh()};
  setInterval(poll,20000);document.addEventListener("visibilitychange",poll);
 })();
 </script>

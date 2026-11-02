@@ -1,6 +1,6 @@
 # Delhi Eco-Flow — Team Dashboard
 
-A shared team dashboard for the AES Unit 4 Social Action Project, styled like a streaming service. Everyone picks their profile on the **Who's working?** screen, then logs their own tasks and weekly check-ins. Team progress at the top is the same for everyone.
+A shared team dashboard for the AES Unit 4 Social Action Project. Everyone picks their profile on the **Who's working?** screen, then logs their own tasks and weekly check-ins. Team progress at the top is the same for everyone.
 
 **Ramzi's profile is the CEO.** Only the CEO can mark milestones, add, complete or delete anyone's tasks, delete check-ins, and export the data. Other members can only change their own tasks and check-ins.
 
